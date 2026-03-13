@@ -1,4 +1,5 @@
 import Cart from "@/components/cart";
+import ProductCart from "@/components/productCart";
 import TextCart from "@/components/text-cart";
 import Image from "next/image";
 
@@ -8,6 +9,7 @@ export default function Home() {
       <main>
         <Cart />
         <TextCart />
+        <ProductCart />
       </main>
     </div>
   );
