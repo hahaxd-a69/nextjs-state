@@ -1,4 +1,6 @@
 import Cart from "@/components/cart";
+import GetProductById from "@/components/GetProductById";
+import InsertProduct from "@/components/InsertProduct";
 import ProductCart from "@/components/productCart";
 import TextCart from "@/components/text-cart";
 import Image from "next/image";
@@ -9,6 +11,8 @@ export default function Home() {
       <main>
         <Cart />
         <TextCart />
+        <GetProductById />
+        <InsertProduct />
         <ProductCart />
       </main>
     </div>

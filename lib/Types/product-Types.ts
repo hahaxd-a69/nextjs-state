@@ -14,3 +14,10 @@ export type Category = {
   name: string;
   image: string;
 };
+export type CreateProductInput = {
+  title: string;
+  price: number;
+  description: string;
+  categoryId: number;
+  images: string[];
+};
