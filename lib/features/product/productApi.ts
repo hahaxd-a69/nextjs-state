@@ -1,39 +1,28 @@
-import { fakeStoreApi } from "../counter/api/api";
-import { ProductResponse, CreateProductInput } from "@/lib/Types/product-Types";
+import { ProductResponse } from "@/lib/Types/product-Types";
+import { fakeStoreApi } from "../api/api";
 
 export const productApi = fakeStoreApi.injectEndpoints({
-  endpoints: (build) => ({
-    // GET /products  — auto-refetches when "Products" tag is invalidated
-    getProducts: build.query<ProductResponse[], void>({
+  endpoints: (builder) => ({
+    getProducts: builder.query<ProductResponse[], void>({
       query: () => "/products",
-      providesTags: (result) =>
-        result
-          ? [
-              ...result.map(({ id }) => ({ type: "Products" as const, id })),
-              { type: "Products", id: "LIST" },
-            ]
-          : [{ type: "Products", id: "LIST" }],
+      providesTags: ["products"],
     }),
-
-    // GET /products/:id  — auto-refetches this specific product
-    getProductById: build.query<ProductResponse, number>({
+    getProductById: builder.query<ProductResponse, number>({
       query: (id) => `/products/${id}`,
-      providesTags: (_result, _err, id) => [{ type: "Products", id }],
+      providesTags: ["products"],
     }),
-
-    // POST /products  — invalidates the list so it auto-refetches
-    addProduct: build.mutation<ProductResponse, CreateProductInput>({
+    addProduct: builder.mutation({
       query: (newProduct) => ({
         url: "/products",
         method: "POST",
         body: newProduct,
       }),
-      invalidatesTags: [{ type: "Products", id: "LIST" }],
+      invalidatesTags: ["products"],
     }),
   }),
-  overrideExisting: false,
 });
 
+// export hooks for ui component can use it
 export const {
   useGetProductsQuery,
   useGetProductByIdQuery,

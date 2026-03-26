@@ -1,17 +1,13 @@
-// define Type or Interfsce
-
-import { createSlice } from "@reduxjs/toolkit/react";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface CounterState {
   value: number;
 }
 
-// define initialState
 const initialState: CounterState = {
-  value: 10,
+  value: 0,
 };
 
-// define Reduce
 export const counterSlice = createSlice({
   name: "counter",
   initialState,
@@ -25,8 +21,5 @@ export const counterSlice = createSlice({
   },
 });
 
-//export Action of Reducer
 export const { increment, decrement } = counterSlice.actions;
-
-//Export Reducer
 export default counterSlice.reducer;

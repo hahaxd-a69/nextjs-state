@@ -1,22 +1,26 @@
 "use client";
-import { increment } from "@/lib/features/counter/conterslice";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { use } from "react";
 
-export default function Cart() {
-  // Get globsl state
-  const counter = useAppSelector((state) => state.counter.value);
-  //  dispatch action
+import { decrement, increment } from "@/lib/features/counter/counterSlice";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+
+export default function Card() {
+  const count = useAppSelector((state) => state.counter.value);
   const dispatch = useAppDispatch();
 
   return (
     <section>
-      <p>Hello I am Minea: {counter}</p>
+      <p>calling globle state: {count}</p>
       <button
+        className="border rounded-xs p-0.5"
         onClick={() => dispatch(increment())}
-        className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 hover:scale-105 transition duration-300"
       >
-        Increase Button
+        increment
+      </button>
+      <button
+        className="border rounded-xs p-0.5 ml-1"
+        onClick={() => dispatch(decrement())}
+      >
+        decrement
       </button>
     </section>
   );

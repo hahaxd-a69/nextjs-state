@@ -9,15 +9,12 @@ export type ProductResponse = {
   creationAt: string;
   updatedAt: string;
 };
+
 export type Category = {
   id: number;
   name: string;
+  slug: string;
   image: string;
-};
-export type CreateProductInput = {
-  title: string;
-  price: number;
-  description: string;
-  categoryId: number;
-  images: string[];
+  creationAt: string;
+  updatedAt: string;
 };

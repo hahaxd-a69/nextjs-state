@@ -1,19 +1,12 @@
-import Cart from "@/components/cart";
-import GetProductById from "@/components/GetProductById";
-import InsertProduct from "@/components/InsertProduct";
-import ProductCart from "@/components/productCart";
-import TextCart from "@/components/text-cart";
-import Image from "next/image";
+import Card from "@/components/cart";
+import ProductsCard from "@/components/productsApi-test";
 
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main>
-        <Cart />
-        <TextCart />
-        <GetProductById />
-        <InsertProduct />
-        <ProductCart />
+      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+        <Card />
+        <ProductsCard />
       </main>
     </div>
   );
