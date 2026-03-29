@@ -54,11 +54,11 @@ export function ProductForm() {
     // call hook of RDK query (useAddProductMutation) to add product
 
     const mockProduct = {
-      title: "PC 12345",
+      title: data.title,
       price: 1000,
-      description: "PC insert RDK with route handlerndler",
-      categoryId: "3",
-      image: [
+      description: data.description,
+      categoryId: 3,
+      images: [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUSEwyX2rrv8xxB4Ots2hkD3KrsrJF0QVSCg&s",
       ],
     };
@@ -66,14 +66,18 @@ export function ProductForm() {
       const payload = await addProduct(mockProduct).unwrap();
       console.log("payload: ", payload);
 
-      if (isSuccess) {
+      toast.success("Product added successfully");
+      form.reset();
+
+      /*if (isSuccess) {
         toast.success("Success");
       }
       {
         toast.error("Failed");
       }
-      console.log("err");
+      console.log("err");*/
     } catch (err) {
+      toast.error("Failed to add product");
       console.log("err", err);
     }
   }
@@ -81,7 +85,7 @@ export function ProductForm() {
   return (
     <Card className="w-full sm:max-w-md">
       <CardHeader>
-        {isSuccess && toast.success("Success")}
+        {/* {isSuccess && toast.success("Success")} */}
         <CardTitle>Bug Report</CardTitle>
         <CardDescription>
           {isSuccess
